@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import Comment from "./Comment";
 import axios from "axios";
-import Comment from "../common/Groups/Comment";
-import AddComment from "../common/Inputs/AddComment";
+import "../../../styles/styles.css";
 
-const Comments: React.FC = () => {
-  const { postId } = useParams<{ postId: string }>();
+interface CommentBlock {
+  postId: number;
+}
+
+const CommentBlock: React.FC<CommentBlock> = ({ postId }) => {
   const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
@@ -14,11 +16,11 @@ const Comments: React.FC = () => {
       .then((response) => setComments(response.data));
   }, [postId]);
 
+  const firstThree = comments.slice(0, 3);
+
   return (
-    <div>
-      <AddComment />
-      <h1>Comments</h1>
-      {comments.map((comment) => (
+    <div className="comments-block-container">
+      {firstThree.map((comment) => (
         <Comment
           key={comment.id}
           id={comment.id}
@@ -27,8 +29,9 @@ const Comments: React.FC = () => {
           email={comment.email}
         />
       ))}
+      <a href={`/comments/${postId}`}>View All Comments</a>
     </div>
   );
 };
 
-export default Comments;
+export default CommentBlock;

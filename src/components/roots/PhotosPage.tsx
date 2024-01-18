@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Photo from "../common/Photo";
+import Photo from "../common/Elements/Photo";
 import "../../styles/styles.css";
-import AddPhoto from "../common/AddPhoto";
+import AddPhoto from "../common/Inputs/AddPhoto";
 
 const PhotosPage: React.FC = () => {
   const { albumId } = useParams<{ albumId: string }>();
