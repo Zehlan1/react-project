@@ -17,7 +17,7 @@ const Comments: React.FC = () => {
   return (
     <div>
       <AddComment />
-      <h1>Comments</h1>
+      <h1 className='comment-list-name'>Comments</h1>
       {comments.map((comment) => (
         <Comment
           key={comment.id}
