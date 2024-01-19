@@ -1,4 +1,4 @@
-# Bare-bones React App
+# React App for School project
 
-This project is meant to be used as a learning opportunity
+Goal of this project is creating a social media page using react.
 
